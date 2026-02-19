@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <title> Aprendendo </title>
+  <style></style>
+</head>
+
+<body>
+  <h2> Calculadora IMC </h2>
+  
+  <form>
+    <label> Peso(kg) </label> <input type="Number" id="kg">
+    <label> Altura (m) </label> <input type="Number" id="m">
+    <a href="#" onclick="executar()"> Executar </a>
+  </form>
+
+  <script src="javascript-imc.js"> </script>
+  <script>
+    const executar = () =>{
+	  const peso = Number(document.getElementById("kg").value);
+	  const altura = Number(document.getElementById("m").value);
+	  const v_imc = imc(peso, altura);
+	  const v_sit = situacao(v_imc);
+	  alert(`IMC: ${v_imc.toFixed(2)} :: Situação: ${v_sit}`);
+	}
+  </script>
+
+</body>
+
+</html>
