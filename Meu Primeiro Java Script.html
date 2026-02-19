@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <title> JS IMC </title>
+</head>
+
+<body>
+  <script>
+    let kg = (prompt("Digite seu peso (kg)"));
+    let alt = (prompt("Digite sua altura (m)"));
+    let IMC = (kg / (alt * alt));
+    
+    if(IMC <= 18.5){
+      alert("Abaixo do Peso.");
+    }
+    else if(IMC >= 18.6 && IMC <= 24.9){
+      alert("Peso Ideal (Parabéns!).");
+    }
+    else if(IMC >= 25 && IMC <= 29.9){
+      alert("Levemente Acima do Peso.");
+    }
+    else if(IMC >= 30 && IMC <= 34.9){
+      alert("Obesidade Grau I.");
+    }
+    else if(IMC >= 35 && IMC <= 39.9){
+      alert("Obesidade Grau II (Severa).");
+    }
+    else if(IMC >= 40){
+      alert("Obesidade Grau III (Mórbida).");
+    }
+  </script>
+</body>
+
+</html>
