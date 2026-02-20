@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <p id="demo"></p>
+  
+  <script>
+    let nascimento = prompt("Você nasceu em que ano?");
+	let idade = 2026 - Number(nascimento);
+	
+	if(isNaN(idade)){
+	  alert("Isso não é um número");
+	} 
+	
+	else{
+	  let text = "Você tem " +  idade + " anos de idade!";
+	  document.getElementById("demo").innerHTML = text;
+	  console.log("Você tem " +  idade + " anos de idade!");
+	}
+	
+  </script>
+</body>
+
+</html>
