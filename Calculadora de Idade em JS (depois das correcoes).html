@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <title> Aprendendo Java Script </title>
+</head>
+
+<body>
+  <h2> Calculadora de Idade </h2>
+  <p id="testando"> </p>
+  
+  <script>
+    let meses31 = [1, 3, 5, 7, 8, 10, 12];
+	let meses30 = [4, 6, 9, 11];
+	let fevereiro =  0;
+	
+    let hoje = new Date();
+	let dia = hoje.getDate();
+	let mes = hoje.getMonth() + 1;
+	let ano = hoje.getFullYear();
+	
+	if((ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0)){ <!-- Se for ano bissexto -->
+	  fevereiro = 29;
+	}
+	else {
+	  fevereiro = 28;
+	}
+	
+	let nascDia = Number(prompt("Você nasceu em que dia?"));
+	let nascMes = Number(prompt("Vocês nasceu em que mês? ex: 06"));
+	let nascAno = Number(prompt("Você nasceu em que ano? ex: 1990"));
+	
+	if(isNaN(nascDia) || isNaN(nascMes) || isNaN(nascAno)){
+	  alert("Você digitiu algo inválido!");
+	} else{
+	
+	let calcDia = dia - (nascDia);
+	let calcMes = mes - (nascMes);
+	let calcAno = ano - (nascAno);
+	
+	
+	 if(calcDia < 0){ <!-- Para dias negativos -->
+       let mesAnterior = mes - 1;
+	   if(mesAnterior == 0) {mesAnterior = 12} <!-- Caso o mês anterior seja Dezembro -->
+		
+		if(meses31.includes(mesAnterior)){ <!-- Adiciona os dias do mês anterior caso seja 31, 30, ou Fevereiro Comum ou Bissexto -->
+		  calcDia += 31;
+		} else if(meses30.includes(mesAnterior)){
+		  calcDia += 30;
+		} else  if(mesAnterior == 2){
+		  calcDia += fevereiro;
+		}
+		
+		calcMes--; <!-- Reduz um mês pois "pegamos emprestado" -->
+	  }
+	
+	
+	  if(calcMes <= 0){ <!-- Para meses negativos -->
+	    calcMes += 12;
+		calcAno--;
+	  }
+	  
+	let text = "Sua idade  exata é: Você tem " + calcAno + " anos, " + calcMes + " meses, e " + calcDia + " dias!";
+	document.getElementById("testando").innerHTML = text;
+	console.log("Sua idade  exata é: Você tem " + calcAno + " anos, " + calcMes + " meses, e " + calcDia + " dias!");
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <title> Aprendendo Java Script </title>
+</head>
+
+<body>
+  <h2> Calculadora de Idade </h2>
+  <p id="testando"> </p>
+  
+  <script>
+    let meses31 = [1, 3, 5, 7, 8, 10, 12];
+	let meses30 = [4, 6, 9, 11];
+	let fevereiro =  0;
+	
+    let hoje = new Date();
+	let dia = hoje.getDate();
+	let mes = hoje.getMonth() + 1;
+	let ano = hoje.getFullYear();
+	
+	if((ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0)){ <!-- Se for ano bissexto -->
+	  fevereiro = 29;
+	}
+	else {
+	  fevereiro = 28;
+	}
+	
+	let nascDia = prompt("Você nasceu em que dia?");
+	let nascMes = prompt("Vocês nasceu em que mês?");
+	let nascAno = prompt("Você nasceu em que ano?");
+	
+	let calcDia = dia - Number(nascDia);
+	  if(calcDia <= 0){
+	    let mesAnterior = mes - 1;
+		
+		if(meses31.includes(mesAnterior)){
+		  calcDia += 31;
+		}
+		else if(meses30.includes(mesAnterior)){
+		  calcDia += 30;
+		}
+		else  if(mesAnterior == 2){
+		  calcDia += fevereiro;
+		}
+		else;
+	  }
+	
+	let calcMes = mes - Number(nascMes);
+	  if(calcMes <= 0){
+	    calcMes += (12 - 1);
+	  }
+	  
+	let calcAno = ano - Number(nascAno);
+	  if((dia < nascDia) && (mes < nascMes)){
+	    calcAno--;
+	  }
+	  
+	  if(isNaN(nascDia) || isNaN(nascMes) || isNaN(nascAno)){
+	  alert("Você digitiu algo inválido!");
+	} else{
+	  
+	let text = "Sua idade  exata é: Você tem " + calcAno + " anos, " + calcMes + " meses, e " + calcDia + " dias!";
+	document.getElementById("testando").innerHTML = text;
+	console.log("Sua idade  exata é: Você tem " + calcAno + " anos, " + calcMes + " meses, e " + calcDia + " dias!");
+    }
+  </script>
+</body>
+
+</html>
