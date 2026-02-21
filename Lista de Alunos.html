@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <title> Learning </title>
+</head>
+
+<body>
+  <p id="testes"> </p>
+  
+  <script>
+    function gerarNotas(){
+	  return Number( (Math.random() * 10).toFixed(1) );
+	}
+    let quantidade = Number(prompt("Quantos Alunos serão cadastrados?"));
+	let alunos = [];
+	
+	function cadastrando(nome, media, situacao){
+	  return "Aluno: " + nome + " | Média: " + media + " | Situação: " + situacao + "\n";
+	}
+	
+	
+	for(let x = 0; x < quantidade; x++){
+	  let registNome = prompt("Qual o nome do Aluno " + (x + 1) + ":");
+	  
+	  let nota1 = gerarNotas();
+	  let nota2 = gerarNotas();
+	  let nota3 = gerarNotas();
+	  
+	  let calcMedia = ((nota1 + nota2 + nota3) / 3).toFixed(1);
+	  
+	  let verSituacao;
+	  if(calcMedia < 5){ verSituacao = "Reprovado"; }
+	  else if(calcMedia >= 5 && calcMedia < 7) { verSituacao = "Recuperação" }
+	  else{ verSituacao = "Aprovado" }
+	  
+	  alunos.push( cadastrando(registNome, calcMedia, verSituacao))
+	}
+	
+	for(let y = 0; y < quantidade; y++){ console.log( alunos[y] ); }
+  </script>
+</body>
+
+</html>
